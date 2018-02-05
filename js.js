@@ -62,6 +62,68 @@ var TextContent = (function () {
 })();
 
 $(function () {
-    console.log(new TextContent().init({id: "#text", div: "#div"}).render());
-    console.log(new TextContent());
+    new TextContent().init({id: "#text", div: "#div"}).render();
 });
+
+/*
+ * 1.简单的实现
+ * 这种实现没有继承性
+ * */
+
+/*function Animal(name){
+ this.name = name;
+ this.getName = function(){
+ return this.name;
+ }
+ };
+
+ var pet = new Animal("cs");
+ console.log(pet.getName());*/
+
+/*
+ * 2.简单的继承
+ * */
+
+/*
+ function Animal(name){
+ this.name = name;
+ };
+
+ Animal.prototype.getName = function(){
+ return this.name;
+ };
+
+ function Dog(name){
+ this.name = name;
+ };
+
+ //prototype上具有Animal的getName方法
+ Dog.prototype = new Animal();
+
+ var dog = new Dog("dog");
+ console.log(dog.getName());*/
+
+
+/*
+ * 3.事件机制，观察者模式
+ *
+ * */
+
+var Class = (function () {
+    var _mix = function (r, s) {
+        for (var p in s) {
+            if (s.hasOwnProperty(p)) {
+                r[p] = s[p];
+            }
+        }
+    }
+
+    var _extend = function () {
+        this.initPrototype = true;
+        var prototype = new this();
+        this.initPrototype = false;
+    }
+
+
+})();
+
