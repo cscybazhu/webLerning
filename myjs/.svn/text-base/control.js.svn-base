@@ -1,0 +1,38 @@
+/**
+ * Created by cuishaoqi on 2017/11/27.
+ */
+angular.module("myapp")
+    .controller("home",["$scope","T",function($scope,T){
+        $scope.logout = function(){
+            swal({
+                title: T.T("logout"),
+                text: T.T("logoutquestion"),
+                type:"warning",
+                showCancelButton:true,
+                showconfirmButton:false,
+                confirmButtonColor:"#7da64b",
+                confirmButtonText: T.T("sure"),
+                cancelButtonText:T.T("cancel"),
+                closeOnConfirm:false
+
+            },function(){
+                DelCookie('loginFlag');
+                DelCookie('auth');
+                DelCookie('username');
+                window.location.href = 'home.asp';
+            })
+        };
+
+    }])
+    .controller("network",["$scope","$compile",function($scope,$compile){
+
+    }])
+    .controller("system",["$scope",function($scope){
+
+    }])
+    .controller("advanced",["$scope",function($scope){
+
+    }])
+    .controller("lte",["$scope",function($scope){
+
+    }])
